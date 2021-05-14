@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pontem Security Login Form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
+    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+    <meta name="description" content="Cyber Security">
+    <link rel="stylesheet" href="./profile.css">
+    <script src="jquery-3.5.1.min.js"></script>
+
+</head>
+
+<body>
+    <div class="menu-bar">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="logo.png"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="leftbox">
+            <nav>
+                <a onclick="tabs(0)" id="person" class="tab active">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+                <a onclick="tabs(1)" id="company" class="tab">
+                    <i class="fa fa-building" aria-hidden="true"></i>
+                </a>
+                <a class="tab" href="./homePage.html">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                </a>
+                <a class="tab" href="./index.html">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </a>
+            </nav>
+        </div>
+        <div class="rightbox">
+            <div class="profile tabShow">
+                <h1>Personal Info</h1>
+                <h2>Full Name</h2>
+                <input type="text" class="input">
+                <h2>Birthday</h2>
+                <input type="text" class="input">
+                <h2>E-mail Address</h2>
+                <input type="text" class="input">
+                <h2>Phone Number</h2>
+                <input type="text" class="input">
+                <h2>Password</h2>
+                <input type="password" class="input">
+                <button class="btn">Update</button>
+            </div>
+            <div class="company tabShow">
+                <h1>Company Info</h1>
+                <h2>Company Name</h2>
+                <input type="text" class="input">
+                <h2>Company Address</h2>
+                <input type="text" class="input">
+                <h2>Type of Work</h2>
+                <input type="text" class="input">
+                <h2>Company Website</h2>
+                <input type="text" class="input">
+                <h2>Number of Clients</h2>
+                <input type="text" class="input">
+                <button class="btn">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabBtn = document.querySelectorAll(".tab");
+        const tab = document.querySelectorAll(".tabShow");
+
+        function tabs(panelIndex) {
+            tab.forEach(function(node) {
+                node.style.display = "none";
+            });
+            tab[panelIndex].style.display = "block";
+        }
+        tabs(0);
+    </script>
+    <script>
+        $(".tab").click(function() {
+            $(this).addClass("active").siblings().removeClass("active");
+        });
+    </script>
+</body>
+
+</html>
