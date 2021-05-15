@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pontem Security Login Form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+    <meta name="description" content="Cyber Security">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
+    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        .body {
+            font-size: 16px;
+        }
+        
+        .menu-bar {
+            background-color: #313131;
+            opacity: 0.88;
+            filter: alpha(opacity=60);
+            max-height: 80px;
+        }
+        
+        .menu-bar .fa {
+            margin-right: 8px;
+        }
+        
+        .menu-bar .navbar-brand {
+            margin-top: -45px;
+        }
+        
+        .nav-link {
+            font-size: 16px;
+            color: #ffffff !important;
+            margin: 2px;
+        }
+        
+        .navbar-nav {
+            text-align: right;
+        }
+        
+        .menu-bar .navbar-toggler {
+            padding-right: 0;
+            outline: none;
+            border: none;
+        }
+        
+        .navbar ul li {
+            list-style: none;
+            display: inline-block;
+            margin: 0 20px;
+            position: relative;
+            margin-left: 310px;
+        }
+        
+        .navbar ul li a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+        
+        .navbar ul li::after {
+            content: "";
+            height: 2px;
+            width: 0;
+            background: #A20F04;
+            position: absolute;
+            left: 0;
+            bottom: 8px;
+            transition: 0.5s;
+        }
+        
+        .navbar ul li:hover:after {
+            width: 98%;
+        }
+        
+        td {
+            border: 0.8px solid rgb(27, 27, 27);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(233, 225, 225, 0.911);
+        }
+        
+        th:nth-child(1) {
+            border: 0.8px solid rgb(27, 27, 27);
+            background: #A20F04;
+            color: #ffffff;
+        }
+        
+        th:nth-child(2) {
+            border: 0.8px solid rgb(27, 27, 27);
+            background: #A20F04;
+            color: #ffffff;
+        }
+        
+        th:nth-child(3) {
+            border: 0.8px solid rgb(27, 27, 27);
+            background: #A20F04;
+            color: #ffffff;
+        }
+        
+        th:nth-child(4) {
+            border: 0.8px solid rgb(27, 27, 27);
+            background: #A20F04;
+            color: #ffffff;
+        }
+        
+        th:nth-child(5) {
+            border: 0.8px solid rgb(27, 27, 27);
+            background: #A20F04;
+            color: #ffffff;
+        }
+        
+        th:nth-child(6) {
+            background: #A20F04;
+            color: #ffffff;
+        }
+        
+        td:nth-child(1) {
+            width: 250px;
+        }
+        
+        td:nth-child(2) {
+            width: 150px;
+        }
+        
+        td:nth-child(3) {
+            width: 150px;
+        }
+        
+        td:nth-child(4) {
+            width: 150px;
+        }
+        
+        td:nth-child(5) {
+            width: 150px;
+        }
+        
+        td:nth-child(6) {
+            width: 100px;
+        }
+        
+        .row_data {
+            font-size: 16.8px;
+            font-family: "Asap", sans-serif;
+            color: rgb(14, 13, 13);
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            //ajax row data
+            var ajax_data = [{
+                input: "Organisation Name",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Organisation Address",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Full filepath (C:\) to your corporate logo",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Different levels of document classifications",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Author",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Board of Directors",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Business Continuity Manager",
+                core: "",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Change Manager",
+                core: "",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Chief Information Security Officer (CISO)",
+                core: "",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Chief Executive Officer (CEO)",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Chief Information Architect",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Chief Technology Officer",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Company Secretary",
+                core: "",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Compliance Manager",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Communications Manager",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Data Protection Officer",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Design Manager",
+                core: "",
+                iso27: "",
+                iso9: "QMS",
+                iso14: ""
+            }, {
+                input: "DPA Compliance Manager",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Emergency Response Teams",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Employees/Staff",
+                core: "",
+                iso27: "",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Energy Manager",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Environment Manager",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: "EMS"
+            }, {
+                input: "Facilities Manager",
+                core: "",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Finance Director (CFO)",
+                core: "",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: ""
+            }, {
+                input: "Head of HR",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Head of Internal Audit",
+                core: "",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Head of IT (CIO)",
+                core: "",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: ""
+            }, {
+                input: "Head of Marketing",
+                core: "",
+                iso27: "",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Head of Production",
+                core: "",
+                iso27: "",
+                iso9: "QMS",
+                iso14: ""
+            }, {
+                input: "Head of Risk",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Head of Sales",
+                core: "",
+                iso27: "",
+                iso9: "QMS",
+                iso14: ""
+            }, {
+                input: "Head of Software Development",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Head of Systems Testing",
+                core: "",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Health and Safety Officer",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "HR Department",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: "EMS"
+            }, {
+                input: "Internal Auditors",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Information Architect",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Information Security Committee",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Information Security Manager",
+                core: "",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Internal Reviewers",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "IT Reviewers",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "IT Department",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: "EMS"
+            }, {
+                input: "IT Helpdesk",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Lead Auditor",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Management System Owner (MSO)",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Manager/Executive (generic/line)",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Network Administrator",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Network Manager",
+                core: "",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Operations Department",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Operations Director (COO)",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Owners",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Premises Manager",
+                core: "",
+                iso27: "ISMS",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Process Manager",
+                core: "MSS",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: "EMS"
+            }, {
+                input: "Procurement Department",
+                core: "",
+                iso27: "",
+                iso9: "QMS",
+                iso14: ""
+            }, {
+                input: "Procurement Manager",
+                core: "",
+                iso27: "",
+                iso9: "QMS",
+                iso14: ""
+            }, {
+                input: "Project Manager",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Proposer",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Quality Manager",
+                core: "",
+                iso27: "ISMS",
+                iso9: "QMS",
+                iso14: ""
+            }, {
+                input: "Risk Committee",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "System Administrator",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Site Manager-ess",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Training Manager",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Users",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }, {
+                input: "Webmaster",
+                core: "",
+                iso27: "",
+                iso9: "",
+                iso14: ""
+            }]
+
+
+
+            var random_id = function() {
+                var id_num = Math.random().toString(9).substr(2, 3);
+                var id_str = Math.random().toString(36).substr(2);
+
+                return id_num + id_str;
+            }
+
+
+            //--->create data table > start
+            var tbl = '';
+            tbl += '<table class="table table-hover">'
+
+            //--->create table header > start
+            tbl += '<thead>';
+            tbl += '<tr>';
+            tbl += '<th>Unique Input</th>';
+            tbl += '<th>Core Templates</th>';
+            tbl += '<th>ISO27001 Templates</th>';
+            tbl += '<th>ISO9001 Templates</th>';
+            tbl += '<th>ISO14001 Templates</th>';
+            tbl += '<th>Options</th>';
+            tbl += '</tr>';
+            tbl += '</thead>';
+
+            //--->create table header > end
+
+
+            //--->create table body > start
+            tbl += '<tbody>';
+
+            //--->create table body rows > start
+            $.each(ajax_data, function(index, val) {
+                //you can replace with your database row id
+                var row_id = random_id();
+
+                //loop through ajax row data
+                tbl += '<tr row_id="' + row_id + '">';
+                tbl += '<td ><div class="row_data" edit_type="click" col_name="fname">' + val['input'] + '</div></td>';
+                tbl += '<td ><div class="row_data" edit_type="click" col_name="lname">' + val['core'] + '</div></td>';
+                tbl += '<td ><div class="row_data" edit_type="click" col_name="email">' + val['iso27'] + '</div></td>';
+                tbl += '<td ><div class="row_data" edit_type="click" col_name="email">' + val['iso9'] + '</div></td>';
+                tbl += '<td ><div class="row_data" edit_type="click" col_name="email">' + val['iso14'] + '</div></td>';
+
+                //--->edit options > start
+                tbl += '<td>';
+
+                tbl += '<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="' + row_id + '" > Edit</a> </span>';
+
+                //only show this button if edit button is clicked
+                tbl += '<span class="btn_save"> <a href="#" class="btn btn-link"  row_id="' + row_id + '"> Save</a> | </span>';
+                tbl += '<span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="' + row_id + '"> Cancel</a> | </span>';
+
+                tbl += '</td>';
+                //--->edit options > end
+
+                tbl += '</tr>';
+            });
+
+            //--->create table body rows > end
+
+            tbl += '</tbody>';
+            //--->create table body > end
+
+            tbl += '</table>'
+                //--->create data table > end
+
+            //out put table data
+            $(document).find('.tbl_user_data').html(tbl);
+
+            $(document).find('.btn_save').hide();
+            $(document).find('.btn_cancel').hide();
+
+
+            //--->make div editable > start
+            $(document).on('click', '.row_data', function(event) {
+                    event.preventDefault();
+
+                    if ($(this).attr('edit_type') == 'button') {
+                        return false;
+                    }
+
+                    //make div editable
+                    $(this).closest('div').attr('contenteditable', 'true');
+                    //add bg css
+                    $(this).addClass('bg-warning').css('padding', '5px');
+
+                    $(this).focus();
+                })
+                //--->make div editable > end
+
+
+            //--->save single field data > start
+            $(document).on('focusout', '.row_data', function(event) {
+                    event.preventDefault();
+
+                    if ($(this).attr('edit_type') == 'button') {
+                        return false;
+                    }
+
+                    var row_id = $(this).closest('tr').attr('row_id');
+
+                    var row_div = $(this)
+                        .removeClass('bg-warning') //add bg css
+                        .css('padding', '')
+
+
+                    var col_name = row_div.attr('col_name');
+                    var col_val = row_div.html();
+
+                    var arr = {};
+                    arr[col_name] = col_val;
+
+                    //use the "arr"	object for your ajax call
+                    $.extend(arr, {
+                        row_id: row_id
+                    });
+
+                    //out put to show
+                    $('.post_msg').html('<pre class="bg-success">' + JSON.stringify(arr, null, 2) + '</pre>');
+
+                })
+                //--->save single field data > end
+
+
+            //--->button > edit > start	
+            $(document).on('click', '.btn_edit', function(event) {
+                event.preventDefault();
+                var tbl_row = $(this).closest('tr');
+
+                var row_id = tbl_row.attr('row_id');
+
+                tbl_row.find('.btn_save').show();
+                tbl_row.find('.btn_cancel').show();
+
+                //hide edit button
+                tbl_row.find('.btn_edit').hide();
+
+                //make the whole row editable
+                tbl_row.find('.row_data')
+                    .attr('contenteditable', 'true')
+                    .attr('edit_type', 'button')
+                    .addClass('bg-warning')
+                    .css('padding', '4px')
+
+
+                //--->add the original entry > start
+                tbl_row.find('.row_data').each(function(index, val) {
+                    //this will help in case user decided to click on cancel button
+                    $(this).attr('original_entry', $(this).html());
+                });
+                //--->add the original entry > end
+
+            });
+            //--->button > edit > end
+
+
+            //--->button > cancel > start	
+            $(document).on('click', '.btn_cancel', function(event) {
+                event.preventDefault();
+
+                var tbl_row = $(this).closest('tr');
+
+                var row_id = tbl_row.attr('row_id');
+
+                //hide save and cacel buttons
+                tbl_row.find('.btn_save').hide();
+                tbl_row.find('.btn_cancel').hide();
+
+                //show edit button
+                tbl_row.find('.btn_edit').show();
+
+                //make the whole row editable
+                tbl_row.find('.row_data')
+                    .attr('edit_type', 'click')
+                    .removeClass('bg-warning')
+                    .css('padding', '')
+
+                tbl_row.find('.row_data').each(function(index, val) {
+                    $(this).html($(this).attr('original_entry'));
+                });
+            });
+            //--->button > cancel > end
+
+
+            //--->save whole row entery > start	
+            $(document).on('click', '.btn_save', function(event) {
+                event.preventDefault();
+                var tbl_row = $(this).closest('tr');
+
+                var row_id = tbl_row.attr('row_id');
+
+
+                //hide save and cacel buttons
+                tbl_row.find('.btn_save').hide();
+                tbl_row.find('.btn_cancel').hide();
+
+                //show edit button
+                tbl_row.find('.btn_edit').show();
+
+
+                //make the whole row editable
+                tbl_row.find('.row_data')
+                    .attr('edit_type', 'click')
+                    .removeClass('bg-warning')
+                    .css('padding', '')
+
+                //--->get row data > start
+                var arr = {};
+                tbl_row.find('.row_data').each(function(index, val) {
+                    var col_name = $(this).attr('col_name');
+                    var col_val = $(this).html();
+                    arr[col_name] = col_val;
+                });
+                //--->get row data > end
+
+                //use the "arr"	object for your ajax call
+                $.extend(arr, {
+                    row_id: row_id
+                });
+
+                //out put to show
+                $('.post_msg').html('<pre class="bg-success">' + JSON.stringify(arr, null, 2) + '</pre>')
+
+
+            });
+            //--->save whole row entery > end
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <section id="header">
+        <div class="menu-bar">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><img src="logo.png"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="./homePage.html"><i class="fa fa-home" aria-hidden="true"></i>HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index.html"><i class="fa fa-sign-out" aria-hidden="true"></i>LOGOUT</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="tbl_user_data"></div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
