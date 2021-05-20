@@ -1,0 +1,223 @@
+body {
+    --color-primary: #A20F04;
+    --color-primary-dark: #7e0c03;
+    --color-secondary: #333333;
+    --color-bar: #d8caca;
+    --color-secondary-dark: #171717;
+    --color-white: #ffffff;
+    --color-error: #cc3333;
+    --border-radius: 4px;
+    padding: 0;
+    margin: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(./t.jpg);
+}
+
+.menu-bar {
+    background-color: #313131;
+    opacity: 0.88;
+    filter: alpha(opacity=60);
+    max-height: 80px;
+}
+
+.menu-bar .fa {
+    margin-right: 8px;
+}
+
+.menu-bar .navbar-brand {
+    margin-top: -12px;
+}
+
+.nav-link {
+    font-size: 16px;
+    color: #ffffff !important;
+    margin: 2px;
+}
+
+.navbar-nav {
+    text-align: right;
+}
+
+.menu-bar .navbar-toggler {
+    padding-right: 0;
+    outline: none;
+    border: none;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.navbar ul li::after {
+    content: "";
+    height: 2px;
+    width: 0;
+    background: var(--color-primary);
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover:after {
+    width: 98%;
+}
+
+.sub-menu {
+    display: none;
+}
+
+.menu-bar ul li:hover .sub-menu {
+    display: block;
+    position: absolute;
+    background: var(--color-primary);
+    margin-top: 15px;
+    margin-left: -20px;
+}
+
+.menu-bar ul li:hover .sub-menu ul {
+    display: block;
+    margin: 10px;
+}
+
+.menu-bar ul li:hover .sub-menu ul li {
+    display: block;
+    margin: 10px;
+    border-bottom: 1px double white;
+    border-radius: 0;
+    text-align: left;
+}
+
+.menu-bar ul li:hover .sub-menu ul li:last-child {
+    border-bottom: none;
+}
+
+.content {
+    width: 100%;
+    position: absolute;
+    top: 44%;
+    transform: translateY(-70%);
+    text-align: center;
+    color: #ffffff;
+}
+
+.content h1 {
+    font-size: 50px;
+    font-weight: 600;
+    font: 'Asap', sans-serif;
+}
+
+button .fa {
+    margin-right: 9px;
+    font-size: 25px;
+}
+
+.button1 {
+    margin: 27px 10px;
+    width: 220px;
+    left: 195px;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 17px;
+    border: 1.5px solid #7e0c03;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.button2 {
+    margin: 27px 10px;
+    width: 260px;
+    left: 215px;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    border: 1.5px solid #7e0c03;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.button3 {
+    margin: 27px 10px;
+    width: 230px;
+    left: 235px;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    border: 1.5px solid #7e0c03;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.button4 {
+    margin: 50px 10px;
+    top: 120px;
+    right: 380px;
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    border: 1.5px solid #7e0c03;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.button5 {
+    margin: 50px 10px;
+    width: 180px;
+    top: 120px;
+    right: 350px;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    border: 1.5px solid #7e0c03;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+span {
+    background: #7e0c03;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+button:hover span {
+    width: 100%;
+}
+
+button:hover {
+    border: none;
+}
