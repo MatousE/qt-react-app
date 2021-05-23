@@ -1,0 +1,138 @@
+.body {
+    font-size: 16px;
+}
+
+.menu-bar {
+    background-color: #313131;
+    opacity: 0.88;
+    filter: alpha(opacity=60);
+    max-height: 80px;
+}
+
+.menu-bar .fa {
+    margin-right: 8px;
+}
+
+.menu-bar .navbar-brand {
+    margin-top: -45px;
+}
+
+.nav-link {
+    font-size: 16px;
+    color: #ffffff !important;
+    margin: 2px;
+}
+
+.navbar-nav {
+    text-align: right;
+}
+
+.menu-bar .navbar-toggler {
+    padding-right: 0;
+    outline: none;
+    border: none;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+    margin-left: 310px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.navbar ul li::after {
+    content: "";
+    height: 2px;
+    width: 0;
+    background: #A20F04;
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover:after {
+    width: 98%;
+}
+
+td {
+    border: 0.8px solid rgb(27, 27, 27);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(233, 225, 225, 0.911);
+}
+
+th:nth-child(1) {
+    border: 0.8px solid rgb(27, 27, 27);
+    background: #A20F04;
+    color: #ffffff;
+}
+
+th:nth-child(2) {
+    border: 0.8px solid rgb(27, 27, 27);
+    background: #A20F04;
+    color: #ffffff;
+}
+
+th:nth-child(3) {
+    border: 0.8px solid rgb(27, 27, 27);
+    background: #A20F04;
+    color: #ffffff;
+}
+
+th:nth-child(4) {
+    border: 0.8px solid rgb(27, 27, 27);
+    background: #A20F04;
+    color: #ffffff;
+}
+
+th:nth-child(5) {
+    border: 0.8px solid rgb(27, 27, 27);
+    background: #A20F04;
+    color: #ffffff;
+}
+
+th:nth-child(6) {
+    background: #A20F04;
+    color: #ffffff;
+}
+
+td:nth-child(1) {
+    width: 250px;
+}
+
+td:nth-child(2) {
+    width: 150px;
+}
+
+td:nth-child(3) {
+    width: 150px;
+}
+
+td:nth-child(4) {
+    width: 150px;
+}
+
+td:nth-child(5) {
+    width: 150px;
+}
+
+td:nth-child(6) {
+    width: 100px;
+}
+
+.row_data {
+    font-size: 16.8px;
+    font-family: "Asap", sans-serif;
+    color: rgb(14, 13, 13);
+}

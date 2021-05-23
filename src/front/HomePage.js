@@ -1,10 +1,12 @@
-import React, { Component, useState, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import './HomePage.css';
-import './t.jpg';
 import logo from './logo.png';
 import Axios from 'axios';
 
 function HomePage() {
+    const history = useHistory();
+
     return (
         <div className = "body">
             <section id="header">
@@ -19,7 +21,7 @@ function HomePage() {
 
                     <nav className="navbar navbar-expand-lg navbar-light">
                         <div className="container-fluid">
-                            <a className="navbar-brand" href="#"><img src={logo}/></a>
+                            <a className="navbar-brand" href="/"><img src={logo}/></a>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon" />
                             </button>
@@ -29,7 +31,7 @@ function HomePage() {
                                         <a className="nav-link active" href="/"><i className="fa fa-home" aria-hidden="true" />HOME</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="./index.html"><i className="fa fa-sign-out" aria-hidden="true" />LOGOUT</a>
+                                        <a className="nav-link"><i className="fa fa-sign-out" aria-hidden="true" />LOGOUT</a>
                                     </li>
                                 </ul>
                             </div>
@@ -38,8 +40,8 @@ function HomePage() {
                 </div>
                 <div className="content">
                     <h1>WELCOME TO PONTEM SECURITY</h1>
-                    <button type="button" className="button button1" id="ISOButton"><span /><i className="fa fa-file-text-o" aria-hidden="true" />GENERATE ISO DOCUMENTS</button>
-                    <button type="button" className="button button2" id="UpOrButton"><span /><i className="fa fa-pencil" aria-hidden="true" />UPDATE ORGANISATION DETAILS</button>
+                    <button  type="button" className="button button1" id="ISOButton"><span /><i className="fa fa-file-text-o" aria-hidden="true" />GENERATE ISO DOCUMENTS</button>
+                    <button onClick={()=> history.push("/UserInput")} type="button" className="button button2" id="UpOrButton"><span /><i className="fa fa-pencil" aria-hidden="true" />UPDATE ORGANISATION DETAILS</button>
                     <button type="button" className="button button3" id="ViewButton"><span /><i className="fa fa-eye" aria-hidden="true" />VIEW ORGANISATION DETAILS</button>
                     <button type="button" className="button button4" id="ProfilButton"><span /><i className="fa fa-user" aria-hidden="true" />PROFILE SETTINGS</button>
                     <button type="button" className="button button5" id="ContactButton"><span /><i className="fa fa-question" aria-hidden="true" />CONTACT US</button>

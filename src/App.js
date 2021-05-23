@@ -1,5 +1,6 @@
 import React ,{Component} from 'react';
 import HomePage from './front/HomePage.js'
+import UserInput from './front/UserInput.js'
 import {
     BrowserRouter as Router,
     Route,
@@ -9,7 +10,13 @@ import {
 function App() {
     return (
         <Router>
-            <Route path={"/"} component={HomePage}/>
+            <div className="App">
+                <Switch>
+                    <Route path={"/"} exact component={HomePage}/>
+                    <Route path={"/UserInput"} component={UserInput}/>
+
+                </Switch>
+            </div>
 
         </Router>
 
