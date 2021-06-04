@@ -1,22 +1,55 @@
-import React, { useState} from 'react';
+import React from 'react';
 import Axios from 'axios';
 import './HomePage.css';
 import logo from './logo.png';
 
-// Function for the view page
-function View(){
-    const [employeeList, setEmployeeList] = useState([]);
+import docs from './OutputDocs'
 
-    // Function to get the organisation details from the back-end
-    function getOrgInfo(){
-            Axios.get("http://localhost:3001/OrgInfo").then((response)=>{
-                setEmployeeList(response.data);
-                console.log(response);
-            });
+// Function for the GenISO web page
+function GenISO() {
+    //Function that gets the updated documents from the backend
+    function ISO(){
+        Axios.get("http://localhost:3001/GenISO").then((response)=>{
+            var temporaryDownloadLink = document.createElement("a");
+            const files = [docs.doc0,
+                docs.doc1,
+                docs.doc2,
+                docs.doc3,
+                docs.doc4,
+                docs.doc5,
+                docs.doc6,
+                docs.doc7,
+                docs.doc8,
+                docs.doc9,
+                docs.doc10,
+                docs.doc11,
+                docs.doc12,
+                docs.doc13,
+                docs.doc14,
+                docs.doc15,
+                docs.doc16,
+                docs.doc17,
+                docs.doc18,
+                docs.doc19,
+                docs.doc20,
+                docs.doc21,
+                docs.doc22,
+                docs.doc23
+            ]
+
+            let i;
+            // Loops through the documents and downloads them
+            for (i = 0; i < 24; i++) {
+                temporaryDownloadLink.setAttribute('href', files[i] )
+                temporaryDownloadLink.setAttribute( 'download', 'file'+(i)+'.docx' )
+                temporaryDownloadLink.click();
+            }
+
+        })
+
     }
-
-    // Javascript to design the view page
-    return (
+    // The javascript for the web page
+    return(
         <div className="app">
             <body>
             <section id="header">
@@ -46,15 +79,10 @@ function View(){
                 </div>
             </section>
             <div className="form">
-                <button onClick={getOrgInfo}> Get Info</button>
-                {employeeList.map((val)=>{
-                    return ( <input className={"employeeText"}
-                                    type={"textarea"}
-                                    value={("Role: ")+(val.employee_role)+("  |  ") +("Employee name: ") + (val.employee_name)}/>)
-                })}
-
+                <button onClick={ISO}>Generate ISO</button>
             </div>
             </body>
-        </div>    )
+        </div>
+    )
 }
-export default View;
+export default GenISO;

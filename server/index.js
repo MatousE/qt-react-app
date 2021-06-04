@@ -5,15 +5,16 @@ const Docxtemplater = require('docxtemplater');
 const PizZip = require('pizzip')
 const path = require('path');
 const fs = require('fs');
+const copydir = require('copy-dir');
 const walkPath = './Controls';
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors())
+app.use(cors());
 app.use(express.json())
 
-
+// Variable creating connection to the database
 const db = mysql.createPool({
     host: 'q-t-db.c8idrehbuuoy.eu-west-2.rds.amazonaws.com',
     user: 'admin',
@@ -21,30 +22,244 @@ const db = mysql.createPool({
     database: 'qtdb'
 });
 
-// function replaceErrors(key, value) {
-//     if (value instanceof Error) {
-//         return Object.getOwnPropertyNames(value).reduce(function(error, key) {
-//             error[key] = value[key];
-//             return error;
-//         }, {});
-//     }
-//     return value;
-// }
+// Function to replace errors
+function replaceErrors(key, value) {
+    if (value instanceof Error) {
+        return Object.getOwnPropertyNames(value).reduce(function(error, key) {
+            error[key] = value[key];
+            return error;
+        }, {});
+    }
+    return value;
+}
 
-// function errorHandler(error) {
-//     console.log(JSON.stringify({error: error}, replaceErrors));
-//
-//     if (error.properties && error.properties.errors instanceof Array) {
-//         const errorMessages = error.properties.errors.map(function (error) {
-//             return error.properties.explanation;
-//         }).join("\n");
-//         console.log('errorMessages', errorMessages);
-//         // errorMessages is a humanly readable message looking like this :
-//         // 'The tag beginning with "foobar" is unopened'
-//     }
-//     throw error;
-// }
+// Function to handle errors when generating the documents
+function errorHandler(error) {
+    console.log(JSON.stringify({error: error}, replaceErrors));
 
+    if (error.properties && error.properties.errors instanceof Array) {
+        const errorMessages = error.properties.errors.map(function (error) {
+            return error.properties.explanation;
+        }).join("\n");
+        console.log('errorMessages', errorMessages);
+        // errorMessages is a humanly readable message looking like this :
+        // 'The tag beginning with "foobar" is unopened'
+    }
+    throw error;
+}
+
+// Function to generate the organisation details
+app.get('/GenISO', (req,res)=>{
+    var author;
+    var boardDirectors;
+    var businessContinuityManager;
+    var changeManager;
+    var chiefInfoSecOfficer;
+    var owner;
+    var companySecretary;
+    var dataProtectionOfficer;
+    var emergencyResponseTeams;
+    var employees;
+    var financeDirector;
+    var headHR;
+    var headIT;
+    var hrDept;
+    var infoSecCommittee;
+    var infoSecManager;
+    var itDept;
+    var manager;
+    var networkManager;
+    var organisationName;
+    var premisesManager;
+    var webmaster;
+    var headSoftwareDevel;
+    var headSystemTest;
+    var procurementManager;
+    var siteManager;
+    var qualityManager;
+    var projectManager;
+
+    // Query to get the organisation name and address
+    const orgNameSQL = "SELECT org_name, org_address from organisation WHERE user_id=(1)";
+    db.query(orgNameSQL, (err,rows)=>{
+        if (err){
+            console.log(err)
+        }
+        else{
+            organisationName = rows[0].org_name
+        }
+    })
+    // Query to get the employee names and details
+    const orgInfoSQL = "SELECT employee_name, employee_role FROM employee WHERE org_id = (1)";
+    db.query(orgInfoSQL, (err,rows)=>{
+        if (err){
+            console.log(err);
+        }
+        else {
+
+            // Checking if the item is any of the following roles and if so setting it the variable
+            rows.forEach(function (item) {
+                if (item.employee_role === "Premises Manager"){
+                    premisesManager = item.employee_name;
+                }
+                else if (item.employee_role === "Project Manager"){
+                    projectManager = item.employee_name;
+                }
+                else if (item.employee_role === "Quality Manager"){
+                    qualityManager = item.employee_name;
+                }
+                else if (item.employee_role === "Site Manager"){
+                    siteManager = item.employee_name;
+                }
+                else if (item.employee_role === "Procurement Manager"){
+                    procurementManager = item.employee_name;
+                }
+                else if (item.employee_role === "Head System Testing"){
+                    headSystemTest = item.employee_name;
+                }
+                else if (item.employee_role === "Head Software Developer"){
+                    headSoftwareDevel = item.employee_name;
+                }
+                else if (item.employee_role === "Owners"){
+                    owner = item.employee_name;
+                }
+                else if (item.employee_role === "Board of Directors"){
+                    boardDirectors = item.employee_name;
+                }
+                else if (item.employee_role === "Author"){
+                    author = item.employee_name;
+                }
+                else if (item.employee_role === "Finance Director"){
+                    financeDirector = item.employee_name;
+                }
+                else if (item.employee_role === "Information Security Manager"){
+                    infoSecManager = item.employee_name;
+                }
+                else if (item.employee_role=== "Chief Information Security Officer"){
+                    chiefInfoSecOfficer = item.employee_name;
+                }
+                else if (item.employee_role === "Employees" ){
+                    employees = item.employee_name;
+                }
+                else if (item.employee_role === "Head IT"){
+                    headIT = item.employee_name;
+                }
+                else if (item.employee_role === "Manager"){
+                    manager = item.employee_name;
+                }
+                else if (item.employee_role === "Change Manager"){
+                    changeManager = item.employee_name;
+                }
+                else if (item.employee_role === "IT Department"){
+                    itDept = item.employee_name;
+                }
+                else if (item.employee_role === "Network Manager"){
+                    networkManager = item.employee_name;
+                }
+                else if (item.employee_role === "Webmaster"){
+                    webmaster = item.employee_name;
+                }
+                else if (item.employee_role === "Information Security Committee"){
+                    infoSecCommittee = item.employee_name;
+                }
+                else if (item.employee_role === "Company Secretary"){
+                    companySecretary = item.employee_name;
+                }
+                else if (item.employee_role === "Emergency Response Teams"){
+                    emergencyResponseTeams = item.employee_name;
+                }
+                else if (item.employee_role === "Business Continuity Manager"){
+                    businessContinuityManager = item.employee_name;
+                }
+                else if (item.employee_role === "Data Protection Officer"){
+                    dataProtectionOfficer = item.employee_name;
+                }
+                else if (item.employee_role === "Head HR"){
+                    headHR = item.employee_name;
+                }
+                else if (item.employee_role === "HR Department"){
+                    hrDept = item.employee_name;
+                }
+
+            });
+
+            // Accessing the directory
+            fs.readdir(walkPath, (err, files) => {
+                if (err){
+                    console.log('Could not list the dir', err)
+                }
+                // Looping through the files withing the directory
+                files.forEach(function(file,index){
+                    const content = fs
+                        .readFileSync(path.resolve(walkPath, file.toString()), 'binary');
+
+                    const zip = new PizZip(content);
+                    let doc;
+                    try {
+                        doc = new Docxtemplater(zip);
+                    } catch(error) {
+                        errorHandler(error);
+                    }
+
+                    // Setting the document to have the relevant data
+                    doc.setData({
+                        ProjectManager : projectManager,
+                        QualityManager : qualityManager,
+                        SiteManager: siteManager,
+                        HeadSystemTest : headSystemTest,
+                        ProcurementManager : procurementManager,
+                        HeadSoftwareDeveloper: headSoftwareDevel,
+                        Owners : owner,
+                        BoardDirectors:boardDirectors,
+                        Author: author,
+                        OrganisationName: organisationName,
+                        PremisesManager : premisesManager,
+                        FinanceDirector : financeDirector,
+                        InfoSecManager: infoSecManager,
+                        ChiefInfoSecOfficer: chiefInfoSecOfficer,
+                        'Employees/Staff':employees,
+                        HeadIT: headIT,
+                        Manager: manager,
+                        ChangeManager: changeManager,
+                        ITDept:itDept,
+                        NetworkManager: networkManager,
+                        Webmaster: webmaster,
+                        InfoSecCommittee: infoSecCommittee,
+                        CompanySecretary: companySecretary,
+                        EmergencyResponseTeams: emergencyResponseTeams,
+                        BusinessContinuityManager: businessContinuityManager,
+                        DataProtectionOfficer: dataProtectionOfficer,
+                        HeadHR: headHR,
+                        HRDept: hrDept
+                     });
+
+                    // Rendering the document with the relevant info
+                    try {
+                        doc.render()
+                    }
+                    catch (error) {
+                        errorHandler(error);
+
+                    }
+
+                    // Saving the documents in /Output
+                    const buf = doc.getZip().generate({type: 'nodebuffer'});
+                    fs.writeFileSync(path.resolve('./Output', (index)+'.docx'), buf);
+
+                });
+            });
+        }
+        let filesArr = [];
+
+        // Copying the files from server to front-end
+        copydir.sync('../server/Output','../src/front/Output')
+
+        // Confirming successful generation
+        res.send("Done");
+    })
+})
+
+// Function to get the organisation employee details
 app.get('/OrgInfo', (req,res)=>{
     const orgInfoSQL = "SELECT employee_name, employee_role FROM employee WHERE org_id = (1);"
     db.query(orgInfoSQL, (err,result)=>{
@@ -55,11 +270,14 @@ app.get('/OrgInfo', (req,res)=>{
 
     })
 })
+
+// Function to update the details of the organisation
 app.post('/API', (req,res)=>{
 
     const CompanyName = req.body.CompanyName;
     const OrganisationAddress = req.body.OrganisationAddress;
 
+    // Updating company name
     if (CompanyName!==""){
         const updateQuery = "UPDATE organisation SET org_name = (?) WHERE user_id=(1)"
         db.query(updateQuery ,[CompanyName],(err,result)=>{
@@ -68,6 +286,7 @@ app.post('/API', (req,res)=>{
             }
         });
     }
+    // Updating company address
     if (OrganisationAddress!==""){
         const updateQuery = "UPDATE organisation SET org_address = (?) WHERE user_id=(1)"
         db.query(updateQuery ,[CompanyName],(err,result)=>{
@@ -127,6 +346,7 @@ app.post('/API', (req,res)=>{
     "Premises Manager",
     "Process Manager",
     "Procurement Department",
+    "Procurement Manager",
     "Project Manager",
     "Proposer",
     "Quality Manager",
@@ -197,6 +417,7 @@ app.post('/API', (req,res)=>{
         req.body.Webmaster,
     ];
 
+    // Looping through all the employee roles to see if they need to be updated
     for (let index = 0; index < JobArray.length; index++){
         if (JobArray[index]!==""){
             const authorUpdate = "UPDATE  employee SET employee_name=(?)  WHERE employee_role=(?)";
@@ -212,41 +433,7 @@ app.post('/API', (req,res)=>{
 
 })
 
-
-// app.get('/', (req,res)=>{
-//     // const sqlView = "SELECT * FROM user";
-
-//     //
-//     // db.query(sqlView,(err,result,fields)=>{
-//     //     res.send(result);
-//     fs.readdir(walkPath, (err, files) => {
-//         if (err){
-//             console.log('Could not list the dir', err)
-//         }
-//         files.forEach(function(file,index){
-//             console.log(file.toString())
-//             var content = fs
-//                 .readFileSync(path.resolve(walkPath, file.toString()), 'binary');
-//             var zip = new PizZip(content);
-//             var doc;
-//             try {
-//                 doc = new Docxtemplater(zip);
-//             } catch(error) {
-//                 // Catch compilation errors (errors caused by the compilation of the template : misplaced tags)
-//                 errorHandler(error);
-//             }
-//
-//             doc.setData({
-//                 first_name: 'John',
-//                 last_name: 'Doe',
-//                 phone: '0652455478',
-//                 description: 'New Website'
-//             });
-//
-//         });
-//     });
-// });
-
+// Checking if back-end is running
 app.listen(3001,()=>{
    console.log('running on port 3001');
 });

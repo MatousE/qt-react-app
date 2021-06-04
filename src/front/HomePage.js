@@ -4,9 +4,11 @@ import './HomePage.css';
 import logo from './logo.png';
 import Axios from 'axios';
 
+// Function that represents the homepage
 function HomePage() {
     const history = useHistory();
 
+    // Javascript to design the Homepage
     return (
         <div className = "body">
             <section id="header">
@@ -40,11 +42,11 @@ function HomePage() {
                 </div>
                 <div className="content">
                     <h1>WELCOME TO PONTEM SECURITY</h1>
-                    <button  type="button" className="button button1" id="ISOButton"><span /><i className="fa fa-file-text-o" aria-hidden="true" />GENERATE ISO DOCUMENTS</button>
+                    <button onClick={()=> history.push("/ISO")} type="button" className="button button1" id="ISOButton"><span /><i className="fa fa-file-text-o" aria-hidden="true" />GENERATE ISO DOCUMENTS</button>
                     <button onClick={()=> history.push("/UserInput")} type="button" className="button button2" id="UpOrButton"><span /><i className="fa fa-pencil" aria-hidden="true" />UPDATE ORGANISATION DETAILS</button>
                     <button onClick={()=> history.push("/View")}  type="button" className="button button3" id="ViewButton"><span /><i className="fa fa-eye" aria-hidden="true" />VIEW ORGANISATION DETAILS</button>
                     <button type="button" className="button button4" id="ProfilButton"><span /><i className="fa fa-user" aria-hidden="true" />PROFILE SETTINGS</button>
-                    <button type="button" className="button button5" id="ContactButton"><span /><i className="fa fa-question" aria-hidden="true" />CONTACT US</button>
+                    <button onClick={()=> history.push("/Contact")} type="button" className="button button5" id="ContactButton"><span /><i className="fa fa-question" aria-hidden="true" />CONTACT US</button>
                 </div>
             </section>
 

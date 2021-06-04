@@ -4,9 +4,10 @@ import './HomePage.css';
 import logo from './logo.png';
 
 
-
+// Function to represent the UserInput page
 function UserInput(){
 
+    // Variables to store the company details
     const [companyName, setCompanyName] = useState("");
     const [OrganisationAddress, setOrganisationAddress] = useState("");
     const [Author, setAuthor] = useState("");
@@ -69,6 +70,7 @@ function UserInput(){
     const [Users, setUsers] =  useState("");
     const [Webmaster, setWebmaster] = useState("");
 
+    // Form to send the company details from the front-end to the backend
     const submitForm = () => {
         Axios.post("http://localhost:3001/API",
             {CompanyName: companyName,
@@ -137,6 +139,7 @@ function UserInput(){
         })
     }
 
+    // Javascript to design the UserInput page
     return (
         <div className="app">
             <body>
